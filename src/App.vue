@@ -1,12 +1,63 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+
+    <div>
+
+      <h2>Contador</h2>
+      <p>{{ count }} {{ stringTest }}</p>
+
+      <div>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+      </div>
+
     </div>
-    <router-view/>
+
+
   </div>
 </template>
+
+<script>
+
+// Esta función nos permite simplificar el importado de propiedades en el caso que sean demasiadas
+import { mapState } from "vuex";
+
+export default {
+
+  name: "app",
+
+  // La manera más fácil de obtener información del estado es a través de una computed property, en el caso de que sean pocas, si son varias lo mejor es usar mapState
+  /* computed: {
+
+    count() {
+
+      return this.$store.state.count;
+
+    }
+
+  } */
+
+  data() {
+    return {
+      test: "test"
+    }
+  },
+
+  // Recibe un array con todas las propiedades que queremos mapear del estado
+  computed:  {
+
+    // Podemos usar spread operators o Object.assign para meter las propiedades computadas de Vuex mas nustras propias propiedades
+    ...mapState(['count']),
+
+    stringTest() {
+      return this.test;
+    }
+
+  }
+
+}
+
+</script>
 
 <style lang="scss">
 #app {

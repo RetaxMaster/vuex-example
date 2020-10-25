@@ -3,13 +3,32 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
+
+  // Este objeto es similar a data()
   state: {
+    count: 0
   },
+
   mutations: {
+
+    // Reciben por parámetro el estado
+    increment(state) {
+      state.count++;
+    },
+
+    decrement(state) {
+      state.count--;
+    }
+
   },
+
   actions: {
   },
+
   modules: {
   }
+
 })
+
+export default store;
