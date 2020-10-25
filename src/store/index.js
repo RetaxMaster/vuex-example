@@ -24,6 +24,7 @@ const store = new Vuex.Store({
 
   },
 
+  // Nos permite definir getters personalizados
   getters: {
 
     // Reciben el state y la lista de todos los getters existentes
@@ -35,7 +36,25 @@ const store = new Vuex.Store({
 
   },
 
+  // Las mutations son sincrónicas, por lo que no podemos hacer llamadas HTTP, en las actions si podemos hacerlas.
   actions: {
+
+    // Reciben el context (La instancia del strore (getters, mutations, state...)) y el payload (Objeto personalizado)
+    incrementAsync(context, payload) {
+
+      return new Promise((resolve) => {
+
+        // Simulación de asincronismo
+        setTimeout(() => {
+          context.commit("increment", payload);
+          resolve();
+        }, 2000)
+
+      });
+
+
+    }
+
   },
 
   modules: {

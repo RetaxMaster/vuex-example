@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
+  <main>
 
+    <h2>Child</h2>
     <div>
 
       <h2>Contador</h2>
@@ -14,17 +15,12 @@
 
       <div>
         <button @click="increment10">+10</button>
-        <button @click="incrementAsync">+Async</button>
       </div>
 
     </div>
 
-    <div>
-      <child></child>
-    </div>
 
-
-  </div>
+  </main>
 </template>
 
 <script>
@@ -32,13 +28,9 @@
 // Esta función nos permite simplificar el importado de propiedades en el caso que sean demasiadas, funciona igual para las mutaciones, y los getters
 import { mapState, mapMutations, mapGetters } from "vuex";
 
-import Child from "@/Child";
-
 export default {
 
-  components: { Child },
-
-  name: "app",
+  name: "child",
 
   // La manera más fácil de obtener información del estado es a través de una computed property, en el caso de que sean pocas, si son varias lo mejor es usar mapState
   /* computed: {
@@ -92,17 +84,6 @@ export default {
         number: 10
       });
     },
-
-    incrementAsync() {
-
-      // La manera de llamar un action es con dispatch
-      this.$store.dispatch("incrementAsync", {
-        number: 2
-      }).then(() => {
-        console.log("Actions terminadas");
-      });
-
-    }
 
     /* decrement() {
       this.$store.commit("decrement");
