@@ -24,6 +24,17 @@ const store = new Vuex.Store({
 
   },
 
+  getters: {
+
+    // Reciben el state y la lista de todos los getters existentes
+    getDouble(state/* , getters */) {
+
+      return state.count * 2;
+
+    }
+
+  },
+
   actions: {
   },
 

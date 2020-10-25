@@ -5,6 +5,7 @@
 
       <h2>Contador</h2>
       <p>{{ count }} {{ stringTest }}</p>
+      <p>{{ getDouble }}</p>
 
       <div>
         <button @click="increment">+</button>
@@ -23,8 +24,8 @@
 
 <script>
 
-// Esta función nos permite simplificar el importado de propiedades en el caso que sean demasiadas, funciona igual para las mutaciones
-import { mapState, mapMutations } from "vuex";
+// Esta función nos permite simplificar el importado de propiedades en el caso que sean demasiadas, funciona igual para las mutaciones, y los getters
+import { mapState, mapMutations, mapGetters } from "vuex";
 
 export default {
 
@@ -53,9 +54,16 @@ export default {
     // Podemos usar spread operators o Object.assign para meter las propiedades computadas de Vuex mas nustras propias propiedades
     ...mapState(['count']),
 
+    ...mapGetters(["getDouble"]),
+
     stringTest() {
       return this.test;
-    }
+    },
+
+    /* double() {
+      // Se acceden como si fuese propiedad, no se ponen paréntesis al final
+      return this.$store.getters.getDouble;
+    } */
 
   },
 
