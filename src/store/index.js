@@ -10,11 +10,12 @@ const store = new Vuex.Store({
     count: 0
   },
 
+  // Permiten actualizar la información del estado
   mutations: {
 
-    // Reciben por parámetro el estado
-    increment(state) {
-      state.count++;
+    // Reciben por parámetro el estado, con payload podemos pasar configuraciones porpias al mutation
+    increment(state, payload = {}) {
+      state.count += payload.number || 1;
     },
 
     decrement(state) {

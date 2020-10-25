@@ -11,6 +11,10 @@
         <button @click="decrement">-</button>
       </div>
 
+      <div>
+        <button @click="increment10">+10</button>
+      </div>
+
     </div>
 
 
@@ -19,8 +23,8 @@
 
 <script>
 
-// Esta función nos permite simplificar el importado de propiedades en el caso que sean demasiadas
-import { mapState } from "vuex";
+// Esta función nos permite simplificar el importado de propiedades en el caso que sean demasiadas, funciona igual para las mutaciones
+import { mapState, mapMutations } from "vuex";
 
 export default {
 
@@ -52,6 +56,29 @@ export default {
     stringTest() {
       return this.test;
     }
+
+  },
+
+  methods: {
+
+    ...mapMutations(["increment", "decrement"]),
+
+    /* increment() {
+
+      // Así podemos mandar a llamar a las mutations del store
+      this.$store.commit("increment");
+
+    }, */
+
+    increment10() {
+      this.$store.commit("increment", {
+        number: 10
+      });
+    },
+
+    /* decrement() {
+      this.$store.commit("decrement");
+    } */
 
   }
 
